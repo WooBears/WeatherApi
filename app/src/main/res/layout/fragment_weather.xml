@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cl_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.WeatherFragment">
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search city ..."
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        android:layout_margin="8dp"
+        app:layout_constraintTop_toTopOf="@+id/cl_layout"
+        app:layout_constraintStart_toStartOf="@+id/cl_layout"
+        app:layout_constraintEnd_toEndOf="@+id/cl_layout"/>
+
+
+    <TextView
+        android:id="@+id/tv_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        android:paddingTop="65dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_degrees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="150dp"
+        android:paddingTop="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_today"
+        app:layout_constraintStart_toStartOf="@+id/tv_today"
+        app:layout_constraintEnd_toEndOf="@id/tv_today"/>
+
+    <ImageView
+        android:id="@+id/iv_current_loc_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/location"
+        app:layout_constraintStart_toStartOf="@+id/tv_degrees"
+        app:layout_constraintEnd_toEndOf="@id/tv_degrees"
+        app:layout_constraintTop_toBottomOf="@id/tv_degrees"/>
+
+    <TextView
+        android:id="@+id/tv_city_abbreviation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="60dp"
+        app:layout_constraintStart_toStartOf="@id/iv_current_loc_image"
+        app:layout_constraintEnd_toEndOf="@id/iv_current_loc_image"
+        app:layout_constraintTop_toBottomOf="@id/iv_current_loc_image"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_cons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_city_abbreviation"
+        android:paddingTop="25dp"
+        tools:ignore="MissingConstraints">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
