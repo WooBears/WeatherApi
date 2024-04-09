@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation
+package com.example.weatherapp.presentation.fragmenst
 
 import android.os.Bundle
 import android.text.Editable
@@ -9,10 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.weatherapp.R
-import com.example.weatherapp.adapter.HoursAdapter
+import com.example.weatherapp.domain.adapter.HoursAdapter
 import com.example.weatherapp.databinding.FragmentWeatherBinding
-import com.example.weatherapp.model.Weather
-import com.example.weatherapp.viewmodel.WeatherViewModel
+import com.example.weatherapp.domain.model.Weather
+import com.example.weatherapp.presentation.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,8 +28,6 @@ class WeatherFragment : Fragment() {
     ): View {
         binding = FragmentWeatherBinding.inflate(inflater, container, false)
         return binding.root
-        // Set up the custom Toolbar
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

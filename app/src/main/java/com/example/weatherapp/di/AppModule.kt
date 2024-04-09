@@ -1,8 +1,8 @@
 package com.example.weatherapp.di
 
-import com.example.weatherapp.data.WeatherApiService
-import com.example.weatherapp.repository.Repository
-import com.example.weatherapp.viewmodel.WeatherViewModel
+import com.example.weatherapp.data.remote.WeatherApiService
+import com.example.weatherapp.data.repository.WeatherRepositoryImpl
+import com.example.weatherapp.domain.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,8 +10,6 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -24,6 +22,7 @@ import javax.inject.Singleton
 class AppModule {
 
     @Provides
+    @Singleton
     fun provideRetrofit(
         client: OkHttpClient
     ): Retrofit {
@@ -35,6 +34,7 @@ class AppModule {
     }
 
     @Provides
+    @Singleton
     fun provideOkHttpClient(
         interceptor: Interceptor
     ): OkHttpClient {
@@ -45,6 +45,7 @@ class AppModule {
     }
 
     @Provides
+    @Singleton
     fun provideInterceptor(): Interceptor {
        return HttpLoggingInterceptor().apply {
            level = HttpLoggingInterceptor.Level.BODY
@@ -52,8 +53,15 @@ class AppModule {
     }
 
     @Provides
+    @Singleton
     fun provideWeatherApi(retrofit: Retrofit): WeatherApiService {
         return retrofit.create(WeatherApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideWeatherRepositoryImpl(apiService: WeatherApiService) : WeatherRepository{
+        return WeatherRepositoryImpl(apiService)
     }
 
 }

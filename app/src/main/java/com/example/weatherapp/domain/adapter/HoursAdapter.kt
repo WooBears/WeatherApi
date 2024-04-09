@@ -1,11 +1,11 @@
-package com.example.weatherapp.adapter
+package com.example.weatherapp.domain.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.weatherapp.databinding.ForecastItemBinding
-import com.example.weatherapp.model.Hour
+import com.example.weatherapp.domain.model.Hour
 import com.squareup.picasso.Picasso
 
 class HoursAdapter : RecyclerView.Adapter<HoursAdapter.HoursViewHolder>(){
@@ -21,13 +21,13 @@ class HoursAdapter : RecyclerView.Adapter<HoursAdapter.HoursViewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): HoursAdapter.HoursViewHolder {
+    ): HoursViewHolder {
         return HoursViewHolder(
             ForecastItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: HoursAdapter.HoursViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HoursViewHolder, position: Int) {
        holder.bind(items[position])
     }
 
